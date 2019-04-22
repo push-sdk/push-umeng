@@ -43,7 +43,7 @@ umeng.push({
 |appId|appID|
 |$appSecret|appSecret|
 |appPkgName|应用包名|
-|pushUrl|推送URL 默认 https://api.push.hicloud.com/pushsend.do|
+|pushUrl|推送URL 默认 https://msgapi.umeng.com/api/send|
 |grant_type|友盟接口参数 默认 'grant_type'|
 |maxLength|友盟推送限制长度 默认500|
 |title|标题|
