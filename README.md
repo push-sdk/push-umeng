@@ -22,9 +22,8 @@ npm install push-umeng --save-dev
 ```javascript
 const UMeng = require('push-umeng');
 const umeng = new UMeng({
-  appId: 'appId',
-  appSecret: 'appSecret',
-  appPkgName: '应用包名'
+  appKey: 'appKey',
+  appMasterSecret: 'appMasterSecret',
 });
 
 umeng.push({
@@ -42,9 +41,8 @@ umeng.push({
 
 | key | value |
 |:----|:----|
-|appId|appID: 友盟后台中取得|
-|appSecret|appSecret: 友盟后台中取得|
-|appPkgName|应用包名|
+|appKey|appKey: 友盟后台中取得|
+|appMasterSecret|appMasterSecret: 友盟后台中取得|
 |pushUrl|推送URL 默认 https://msgapi.umeng.com/api/send|
 |maxLength|友盟推送限制长度 默认500|
 |title|标题|
