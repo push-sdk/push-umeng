@@ -37,19 +37,28 @@ umeng.push({
 
 > 因为友盟api最多支持500台机器推送，如果 list 长度超过500，则内部会发起 Math.ceil(n / 500) 条请求, 同时也会有 Math.ceil(n / 500) 条回调。
 
-## 参数（通用）
+## new UMeng 参数
 
 | key | value |
 |:----|:----|
 |appKey|appKey: 友盟后台中取得|
 |appMasterSecret|appMasterSecret: 友盟后台中取得|
 |pushUrl|推送URL 默认 https://msgapi.umeng.com/api/send|
-|maxLength|友盟推送限制长度 默认500|
+|maxLength|友盟推送限制长度 默认500，超过500将重置为500|
+
+## push 参数（通用）
+
+| key | value |
+|:----|:----|
 |title|标题|
 |content|内容|
 |list|设备列表|
+|success|单次推送成功处理|
+|error|单次推送失败处理|
+|finish|所有推送完成（成功/失败）|
+|sleep|推送间隔时间|
 
-## 更多参数
+### push 友盟更多参数
 ```
 {
     ...
