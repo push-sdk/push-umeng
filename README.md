@@ -26,12 +26,13 @@ const umeng = new UMeng({
   appMasterSecret: 'appMasterSecret',
 });
 
+// 文件推送
 umeng.push({
   title: '标题',
   content: '内容',
   list: ['pushId'], 
   success(res){}, // 成功回调
-  error(err){} // 失败回调
+  fail(err){} // 失败回调
 });
 ```
 
@@ -54,9 +55,21 @@ umeng.push({
 |content|内容|
 |list|设备列表|
 |success|单次推送成功处理|
-|error|单次推送失败处理|
+|fail|单次推送失败处理|
 |finish|所有推送完成（成功/失败）|
 |sleep|推送间隔时间|
+
+### function finish回调数据
+```
+{
+  status: 'success',
+  maxLength,
+  group,
+  success_total,
+  fail_total,
+  taskIdList, // 仅push方法有此数据
+}
+```
 
 ### push 友盟更多参数
 ```
