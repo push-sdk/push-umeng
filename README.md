@@ -33,8 +33,8 @@ umeng.push({
   title: '标题',
   content: '内容',
   list: ['pushId'], 
-  success(res){}, // 成功回调
-  fail(err){} // 失败回调
+  success(response){}, // 成功回调
+  fail(error){} // 失败回调
 });
 ```
 
@@ -56,7 +56,7 @@ umeng.push({
 |list|设备列表| |
 |success(response){}|单次推送成功处理| response为友盟接口返回信息 |
 |fail(error){}|单次推送失败处理| |
-|finish(data){}|所有推送完成（成功|失败）| data参数<a href="#push_finish_data">详见</a> |
+|finish(data){}|所有推送完成（成功/失败）| data参数<a href="#push_finish_data">详见</a> |
 |sleep|推送间隔时间| |
 
 > 因友盟任务类型消息才能查询消息状态，为满足可以推送自定义设备且查询推送消息状态，因此使用文件播方式推送。
