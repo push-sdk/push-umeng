@@ -38,30 +38,30 @@ umeng.push({
 });
 ```
 
-> 因为友盟api最多支持500台机器推送，如果 list 长度超过500，则内部会发起 Math.ceil(n / 500) 条请求, 同时也会有 Math.ceil(n / 500) 条回调。
-
-## new UMeng 参数
+## new UMeng()
 
 | key | value |
 |:----|:----|
 |appKey|appKey: 友盟后台中取得|
 |appMasterSecret|appMasterSecret: 友盟后台中取得|
 |pushUrl|推送URL 默认 https://msgapi.umeng.com/api/send|
-|maxLength|友盟推送限制长度 默认500，超过500将重置为500|
+|maxLength|友盟推送限制长度（此为文件播限制长度，默认50000）|
 
-## push 参数（通用）
+## push 参数（通用） | 文件播，可查询消息状态
 
-| key | value |
-|:----|:----|
-|title|标题|
-|content|内容|
-|list|设备列表|
-|success|单次推送成功处理|
-|fail|单次推送失败处理|
-|finish|所有推送完成（成功/失败）|
-|sleep|推送间隔时间|
+| key | desc | 备注 |
+|:----|:----|:----|
+|title|标题| |
+|content|内容| |
+|list|设备列表| |
+|success(response){}|单次推送成功处理| response为友盟接口返回信息 |
+|fail(error){}|单次推送失败处理| |
+|finish(data){}|所有推送完成（成功|失败）| data参数<a href="#push_finish_data">详见</a> |
+|sleep|推送间隔时间| |
 
-### function finish回调数据
+> 因友盟任务类型消息才能查询消息状态，为满足可以推送自定义设备且查询推送消息状态，因此使用文件播方式推送。
+
+#### <a name="push_finish_data">finish(data) 回调数据</a>
 ```
 {
   status: 'success',
@@ -73,7 +73,7 @@ umeng.push({
 }
 ```
 
-### push 友盟更多参数
+## push 友盟更多参数
 ```
 {
     ...
@@ -161,5 +161,28 @@ umeng.push({
     "mi_activity": "xx",    // 可选，mipush值为true时生效，表示走系统通道时打开指定页面acitivity的完整包路径。
 }
 ```
+
+## queryPushStatus 查询push的消息状态
+
+| key | desc | 备注 |
+|:----|:----|:----|
+|taskId| 查询id（在push中返回）| |
+|success(response){}|单次推送成功处理| response为友盟接口返回信息 |
+|fail(error){}|单次推送失败处理| |
+
+## pushList 列播
+
+| key | desc | 备注 |
+|:----|:----|:----|
+|title|标题| |
+|content|内容| |
+|list|设备列表| |
+|success(response){}|单次推送成功处理| response为友盟接口返回信息 |
+|fail(error){}|单次推送失败处理| |
+|finish(data){}|所有推送完成（成功|失败）| data参数<a href="#push_finish_data">详见</a> |
+|sleep|推送间隔时间| |
+
+> 因为友盟列播api最大支持500台机器推送，如果 list 长度超过500，则内部会发起 _.chunk(n / 500) 条请求, 同时也会有 _.chunk(n / 500) 条回调。
+> 在new UMeng时pushListMaxLength设置长度上线。
 
 [友盟U-PUSH API官方文档](https://developer.umeng.com/docs/66632/detail/68343)
