@@ -11,6 +11,8 @@
 
 [华为推送](https://www.npmjs.com/package/push-huawei)
 
+[oppo推送](https://www.npmjs.com/package/push-oppo)
+
 [iOS推送](https://www.npmjs.com/package/push-ios)
 
 #
