@@ -42,12 +42,16 @@ umeng.push({
 
 | key | value |
 |:----|:----|
-|appKey|appKey: 友盟后台中取得|
-|appMasterSecret|appMasterSecret: 友盟后台中取得|
-|pushUrl|推送URL 默认 https://msgapi.umeng.com/api/send|
-|maxLength|友盟推送限制长度（此为文件播限制长度，默认50000）|
+|appKey| 必填： 友盟后台中取得|
+|appMasterSecret|必填： 友盟后台中取得|
+|pushUrl|推送URL 默认 https://msgapi.umeng.com/api/send |
+|maxLength| push推送限制长度（此为文件播限制长度）默认50000 |
+|pushListMaxLength| pushList推送限制长度（此为列播限制长度）默认500 |
 
-## push 参数（通用） | 文件播，可查询消息状态
+## 方法
+
+### push() 参数（通用）
+> 此为文件播，可用 <a href="#method_queryPushStatus>queryPushStatus</a>查询消息状态
 
 | key | desc | 备注 |
 |:----|:----|:----|
@@ -73,7 +77,7 @@ umeng.push({
 }
 ```
 
-## push 友盟更多参数
+### push 友盟更多参数
 ```
 {
     ...
@@ -162,15 +166,7 @@ umeng.push({
 }
 ```
 
-## queryPushStatus 查询push的消息状态
-
-| key | desc | 备注 |
-|:----|:----|:----|
-|taskId| 查询id（在push中返回）| |
-|success(response){}|单次推送成功处理| response为友盟接口返回信息 |
-|fail(error){}|单次推送失败处理| |
-
-## pushList 列播
+### pushList 列播
 
 | key | desc | 备注 |
 |:----|:----|:----|
@@ -184,5 +180,29 @@ umeng.push({
 
 > 因为友盟列播api最大支持500台机器推送，如果 list 长度超过500，则内部会发起 _.chunk(n / 500) 条请求, 同时也会有 _.chunk(n / 500) 条回调。
 > 在new UMeng时pushListMaxLength设置长度上线。
+
+
+### <a name="method_queryPushStatus">queryPushStatus</a> 
+
+查询push的消息状态，友盟仅任务类型推送(文件播)可查询消息状态。
+
+| key | desc | 备注 |
+|:----|:----|:----|
+|taskId| 查询id（在push中返回）| String or Array |
+|success(response){}|单次查询成功处理| response为友盟接口返回信息 |
+|fail(error){}|单次查询失败处理| |
+|finish(data){}| 全部查询完成处理| |
+
+
+当taskId未Array时，finish()中回调参数如下：
+
+| key | desc | 备注 |
+|:----|:----|:----|
+|success_total| 查询成功总数 |  |
+|fail_total| 查询失败总数|  |
+|successResList| 查询成功的res列表 | Array[res] |
+|failIdList}| 查询失败的taskd列表 | Array[String]  |
+
+
 
 [友盟U-PUSH API官方文档](https://developer.umeng.com/docs/66632/detail/68343)
