@@ -201,7 +201,7 @@ umeng.push({
 |success_total| 查询成功总数 |  |
 |fail_total| 查询失败总数|  |
 |successResList| 查询成功的res列表 | Array[res] |
-|failIdList}| 查询失败的taskd列表 | Array[String]  |
+|failIdList| 查询失败的taskd列表 | Array[String]  |
 
 
 
