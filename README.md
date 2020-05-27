@@ -32,7 +32,25 @@ const umeng = new UMeng({
 umeng.push({
   title: '标题',
   content: '内容',
-  list: ['pushId'], 
+  list: ['device_token'], 
+  success(response){}, // 成功回调
+  fail(error){} // 失败回调
+});
+
+// 列播推送
+umeng.pushList({
+  title: '标题',
+  content: '内容',
+  list: ['device_token'], 
+  success(response){}, // 成功回调
+  fail(error){} // 失败回调
+});
+
+// 单播推送
+umeng.pushSingle({
+  title: '标题',
+  content: '内容',
+  device_token: 'device_token', 
   success(response){}, // 成功回调
   fail(error){} // 失败回调
 });

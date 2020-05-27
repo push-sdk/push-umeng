@@ -1,21 +1,22 @@
 {
   "name": "push-umeng",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "push-umeng",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "axios": "0.19.0",
+    "lodash": "^4.17.15",
     "moment": "2.24.0"
   },
   "files": [
     "lib"
   ],
-  "repository": { 
-    "type" : "git", 
-    "url" : "https://github.com/xieyihao/push-umeng.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xieyihao/push-umeng.git"
   },
-  "keywords":[ 
+  "keywords": [
     "koa",
     "umeng",
     "push-umeng",
@@ -24,7 +25,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "bugs":{
+  "bugs": {
     "url": "https://github.com/xieyihao/push-umeng.gitissues",
     "email": "xieyihaod@gmail.com"
   },
